@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>서울시 장애인 지도 모음</title>
+  <style>
+    :root { --bg:#f6f7f9; --card:#fff; --txt:#111; --muted:#6b7280; --pri:#2563eb; }
+    * { box-sizing: border-box; }
+    html,body { height:100%; margin:0; background:var(--bg); color:var(--txt); font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Pretendard,Apple SD Gothic Neo,Arial,sans-serif; }
+    header { position:sticky; top:0; z-index:10; background:var(--card); border-bottom:1px solid #e5e7eb; }
+    .wrap { max-width:1200px; margin:0 auto; padding:16px 20px; }
+    h1 { margin:0 0 6px; font-size:20px; }
+    .desc { margin:0; color:var(--muted); font-size:14px; }
+    .bar { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+    .btn {
+      appearance:none; border:1px solid #e5e7eb; background:#fff; color:#111;
+      padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600;
+      transition:all .15s ease;
+    }
+    .btn:hover { border-color:#cbd5e1; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .btn.active { border-color:var(--pri); color:#fff; background:var(--pri); }
+    .links { margin-left:auto; display:flex; gap:10px; align-items:center; }
+    .links a { color:var(--pri); text-decoration:none; font-weight:600; }
+    main { height:calc(100vh - 116px); } /* 헤더+여백 제외하고 꽉 차게 */
+    iframe { width:100%; height:100%; border:0; background:#fff; border-top:1px solid #e5e7eb; }
+    footer { font-size:12px; color:var(--muted); padding:10px 20px; text-align:center; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>서울시 장애인 지도 모음</h1>
+      <p class="desc">아래 버튼으로 보고 싶은 지도를 선택하세요. 새 탭으로도 열 수 있어요.</p>
+      <div class="bar" id="buttons">
+        <button class="btn" data-map="risk_map_final.html">폭염 취약지도</button>
+        <button class="btn" data-map="networkhub.html">네트워크 허브 지도</button>
+        <button class="btn" data-map="disabledpop.html">장애인 인구 지도</button>
+        <div class="links">
+          <a href="risk_map_final.html" target="_blank" rel="noopener">폭염 취약지도 ↗︎</a>
+          <a href="networkhub.html" target="_blank" rel="noopener">네트워크 허브 ↗︎</a>
+          <a href="disabledpop.html" target="_blank" rel="noopener">장애인 인구 ↗︎</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <iframe id="viewer" title="지도 뷰어" loa
