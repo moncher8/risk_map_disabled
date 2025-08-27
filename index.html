@@ -46,4 +46,32 @@
   </header>
 
   <main class="wrap">
-    <iframe id="viewer" title="지도 뷰어" loa
+    <iframe id="viewer" title="지도 뷰어" loading="eager"></iframe>
+  </main>
+
+  <footer>© moncher8 · GitHub Pages</footer>
+
+  <script>
+    const defaultMap = "risk_map_final.html"; // 기본으로 띄울 지도
+    const viewer = document.getElementById("viewer");
+    const btns = Array.from(document.querySelectorAll("#buttons .btn"));
+
+    function load(map) {
+      viewer.src = map;
+      btns.forEach(b => b.classList.toggle("active", b.dataset.map === map));
+      // 주소창에 선택 상태 반영 (새로고침 시 같은 지도 유지)
+      const url = new URL(window.location);
+      url.searchParams.set("map", map);
+      history.replaceState(null, "", url);
+    }
+
+    // 버튼 클릭 핸들러
+    btns.forEach(b => b.addEventListener("click", () => load(b.dataset.map)));
+
+    // URL ?map=... 지원
+    const q = new URLSearchParams(location.search).get("map");
+    const start = btns.some(b => b.dataset.map === q) ? q : defaultMap;
+    load(start);
+  </script>
+</body>
+</html>
